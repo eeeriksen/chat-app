@@ -12,8 +12,8 @@ export const Welcome = () => {
   return (
     < div className={css.container}>
       <p className={css.title}>Welcome!</p>
+      <label className={css.inputLabel} htmlFor="username">Username</label>
       <div className={css.inputContainer}>
-        <label className={css.inputLabel} htmlFor="username">Username</label>
         <input
           className={css.input}
           id="username"
@@ -21,7 +21,7 @@ export const Welcome = () => {
           onChange={(e) => setUsername(e.target.value)}
           type="text"
         />
-        <button onClick={join}>Join</button>
+        <button className={css.button} onClick={join}>Join</button>
       </div>
     </div >
   )
