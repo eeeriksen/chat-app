@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-
-import { WelcomeContext } from '../contexts/WelcomeContext'
+import { ChatContext } from '@/contexts/ChatContext'
+import { Socket } from '@/services/socketConnection'
 
 export const StateContextProvider = (props) => {
   const setUsername = (username) => {
@@ -21,12 +21,13 @@ export const StateContextProvider = (props) => {
   const valueProvider = {
     state: state,
     setUsername,
-    setShowChat
+    setShowChat,
+    Socket
   }
 
   return (
-    <WelcomeContext.Provider value={valueProvider}>
+    <ChatContext.Provider value={valueProvider}>
       {props.children}
-    </WelcomeContext.Provider>
+    </ChatContext.Provider>
   )
 }

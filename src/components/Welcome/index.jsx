@@ -1,15 +1,14 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
-import { WelcomeContext } from '@/contexts/WelcomeContext'
+import { ChatContext } from '@/contexts/ChatContext'
 import css from './welcome.module.css'
 
 export const Welcome = () => {
-  const { state: { username }, setUsername, setShowChat } = useContext(WelcomeContext)
+  const { state: { username }, setUsername, setShowChat } = useContext(ChatContext)
   const [showAlert, setShowAlert] = useState(false)
   const usernameInput = useRef(null)
 
   const join = () => {
     if (username !== '') {
-      setShowAlert(false)
       setShowChat(true)
     } else {
       setShowAlert(true)

@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
-import { WelcomeContext } from '@/contexts/WelcomeContext'
+import { ChatContext } from '@/contexts/ChatContext'
 import { Welcome } from '@components/Welcome'
 import { ChatView } from '@components/ChatView'
 import css from './layout.module.css'
 
 export const Layout = () => {
-  const { state: { showChat } } = useContext(WelcomeContext)
+  const { state: { showChat } } = useContext(ChatContext)
 
   return (
     <div className={css.container}>
