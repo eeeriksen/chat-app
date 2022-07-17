@@ -1,0 +1,12 @@
+.usersContainer {
+  border-radius: 6px;
+  padding: 20px;
+  background-color: white;
+  flex-grow: 1;
+}
+
+.usersTitle {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
