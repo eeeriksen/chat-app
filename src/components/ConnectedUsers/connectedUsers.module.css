@@ -11,6 +11,10 @@
   margin-bottom: 30px;
 }
 
+.username {
+  margin-bottom: 6px;
+}
+
 .bold {
   font-weight: 700;
 }
