@@ -3,6 +3,7 @@ const app = express()
 const http = require('http')
 const cors = require('cors')
 const { Server } = require('socket.io')
+const { addUser, getUser, getUsers, removeUser } = require('./users')
 
 app.use(cors())
 
@@ -16,15 +17,15 @@ const io = new Server(server, {
 })
 
 io.on('connection', (socket) => {
-  console.log(`User ${socket.id} connected`)
-
-  socket.on('joinRoom', (data) => {
-    socket.join(data.room)
-    socket.emit('updateUsersList', data.username)
+  socket.on('joinRoom', ({ username, room }) => {
+    addUser(socket.id, username, room)
+    socket.join(room)
+    io.in(room).emit('updateUsers', getUsers())
   })
 
   socket.on('disconnect', () => {
-    console.log(`User ${socket.id} disconnected`)
+    removeUser(socket.id)
+    io.emit('updateUsers', getUsers())
   })
 })
 
