@@ -1,14 +1,30 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React, { useRef, useState, useEffect, useContext } from 'react'
+import { SocketContext } from '@/contexts/SocketContext'
+import { UsersContext } from '@/contexts/UsersContext'
 import css from './chatConversation.module.css'
 
 export const ChatConversation = () => {
   const messageInput = useRef(null)
   const [message, setMessage] = useState('')
+  const { Socket } = useContext(SocketContext)
+  const { state: { username } } = useContext(UsersContext)
+  const [conversation, setConversation] = useState([])
+
+  const sendMessage = () => {
+    Socket.emit('sendMessage', { username, message, room: 'main' })
+  }
 
   const enter = (e) => {
-    // if (e.keyCode === 13)
-    // sendMessage()
+    if (e.keyCode === 13) {
+      sendMessage()
+    }
   }
+
+  useEffect(() => {
+    Socket.on('updateConversation', chatItem => {
+      setConversation(conv => [...conv, chatItem])
+    })
+  }, [Socket])
 
   useEffect(() => {
     messageInput.current.focus()
@@ -18,8 +34,8 @@ export const ChatConversation = () => {
     <div className={css.chatContainer}>
       <div className={css.conversation}>
         {
-          [0, 0, 0, 0].map((message, i) => (
-            <p key={i}>message</p>
+          conversation.map((item, i) => (
+            <p key={i}>{item.message}</p>
           ))
         }
       </div>
@@ -29,7 +45,7 @@ export const ChatConversation = () => {
           className={css.input}
           id="message"
           value={message}
-          onKeyUp={(e) => enter}
+          onKeyUp={(e) => enter(e)}
           placeholder="Your message..."
           onChange={(e) => setMessage(e.target.value)}
           type="text"
@@ -37,7 +53,7 @@ export const ChatConversation = () => {
         <button
           type='button'
           className={css.button}
-          onClick={() => { }}
+          onClick={sendMessage}
         >&#9658;</button>
       </div>
     </div>

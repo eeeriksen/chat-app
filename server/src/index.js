@@ -23,6 +23,16 @@ io.on('connection', (socket) => {
     io.in(room).emit('updateUsers', getUsers())
   })
 
+  socket.on('sendMessage', ({ username, message, room }) => {
+    console.log({ username, message })
+    const msg = {
+      id: socket.id,
+      username,
+      message
+    }
+    io.in(room).emit('updateConversation', msg)
+  })
+
   socket.on('disconnect', () => {
     removeUser(socket.id)
     io.emit('updateUsers', getUsers())

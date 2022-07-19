@@ -1,9 +1,9 @@
 import React, { useContext, useState, useRef, useEffect } from 'react'
-import { ChatContext } from '@/contexts/ChatContext'
+import { UsersContext } from '@/contexts/UsersContext'
 import css from './welcome.module.css'
 
 export const Welcome = () => {
-  const { state: { username }, setUsername, setShowChat } = useContext(ChatContext)
+  const { state: { username }, setUsername, setShowChat } = useContext(UsersContext)
   const [showAlert, setShowAlert] = useState(false)
   const usernameInput = useRef(null)
 

@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ChatContext } from '@/contexts/ChatContext'
+import { UsersContext } from '@/contexts/UsersContext'
+import { SocketContext } from '@/contexts/SocketContext'
 import css from './connectedUsers.module.css'
 
 export const ConnectedUsers = () => {
-  const { Socket, state: { username, listOfUsers }, updateUsers } = useContext(ChatContext)
+  const { state: { username, listOfUsers }, updateUsers } = useContext(UsersContext)
+  const { Socket } = useContext(SocketContext)
 
   useEffect(() => {
     Socket.on('updateUsers', (value) => {
