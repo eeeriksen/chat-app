@@ -12,6 +12,7 @@ export const ChatConversation = () => {
 
   const sendMessage = () => {
     Socket.emit('sendMessage', { username, message, room: 'main' })
+    setMessage('')
   }
 
   const enter = (e) => {
