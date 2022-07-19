@@ -36,11 +36,14 @@ export const ChatConversation = () => {
       <div className={css.conversation}>
         {
           conversation.map((item, i) => (
-            <p key={i}>{item.message}</p>
+            <div className={`${username === item.username ? css.self : css.other} ${css.messageChat}`} key={i}>
+              <p className={css.usernameMessage}>{item.username}</p>
+              <p className={css.messageContent}>{item.message}</p>
+            </div>
           ))
         }
       </div>
-      <div className={css.message}>
+      <div className={css.messageInput}>
         <input
           ref={messageInput}
           className={css.input}

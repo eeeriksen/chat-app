@@ -9,9 +9,11 @@
 
 .conversation {
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-.message {
+.messageInput {
   display: flex;
 }
 
@@ -38,3 +40,29 @@
   background-color: rgb(212, 212, 212);
   cursor: pointer;
 }
+
+.messageChat {
+  width: fit-content;
+  padding: 4px 8px 12px 8px;
+  max-width: 80%;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  min-width: 70px;
+}
+
+.other {
+  align-self: flex-start;
+  background-color: #666666;
+}
+
+.self {
+  background-color: #4d4d4d;
+  align-self: flex-end;
+}
+
+.usernameMessage {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.messageContent {}
