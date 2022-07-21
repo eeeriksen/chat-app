@@ -2,7 +2,7 @@
   border-radius: 6px;
   padding: 20px;
   background-color: #3c3c3c;
-  flex-grow: 1;
+  flex-basis: 25%;
 }
 
 .usersTitle {
