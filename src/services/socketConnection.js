@@ -1,3 +1,3 @@
 import io from 'socket.io-client'
 
-export const Socket = io.connect('http://eriksend.com:3006')
+export const Socket = io.connect('http://chat-server.eriksend.com')
