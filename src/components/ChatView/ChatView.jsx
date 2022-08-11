@@ -8,15 +8,25 @@ import { SocketContext } from '@/contexts/SocketContext'
 export const ChatView = () => {
   const { state: { username } } = useContext(UsersContext)
   const { Socket } = useContext(SocketContext)
+  const [innerWidth, setinnerWidth] = useState(null)
 
   useEffect(() => {
     Socket.emit('joinRoom', { username, room: 'main' })
+
+    function resizeWindow(event) {
+      setinnerWidth(window.innerWidth)
+    }
+
+    window.addEventListener("resize", resizeWindow)
+    resizeWindow()
+
+    return () => window.removeEventListener("resize", resizeWindow)
   }, [])
 
   return (
-    <div className={css.container}>
-      <ConnectedUsers />
+    <main className={css.main}>
+      {innerWidth > 799 && <ConnectedUsers />}
       <ChatConversation />
-    </div>
+    </main>
   )
 }

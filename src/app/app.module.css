@@ -46,4 +46,15 @@ input {
   font-size: 15px;
   padding: 0 10px;
   outline: none;
+  border-radius: 8px;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+button:hover,
+button:focus {
+  background-color: rgb(91 91 91);
 }

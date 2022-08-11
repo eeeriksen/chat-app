@@ -44,7 +44,7 @@ export const ChatConversation = () => {
   }, [])
 
   return (
-    <div className={css.chatContainer}>
+    <section className={css.section}>
       <div ref={conversationContainer} className={css.conversationContainer}>
         <div ref={conversationElement} className={css.conversation}>
           {
@@ -57,7 +57,7 @@ export const ChatConversation = () => {
           }
         </div>
       </div>
-      <div className={css.messageInput}>
+      <div className={css.messageInputContainer}>
         <input
           ref={messageInput}
           className={css.input}
@@ -75,6 +75,6 @@ export const ChatConversation = () => {
           onClick={sendMessage}
         >&#9658;</button>
       </div>
-    </div>
+    </section>
   )
 }

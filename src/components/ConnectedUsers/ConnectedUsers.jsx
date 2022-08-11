@@ -14,8 +14,8 @@ export const ConnectedUsers = () => {
   }, [Socket])
 
   return (
-    <div className={css.usersContainer}>
-      <p className={css.usersTitle}>Connected Users</p>
+    <section className={css.section}>
+      <h3 className={css.h3}>Connected Users</h3>
       <div className={css.listOfUsers}>
         {
           listOfUsers.map(user => (
@@ -33,6 +33,6 @@ export const ConnectedUsers = () => {
           ))
         }
       </div>
-    </div>
+    </section>
   )
 }

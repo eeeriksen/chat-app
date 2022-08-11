@@ -8,10 +8,10 @@ export const Layout = () => {
   const { state: { showChat } } = useContext(UsersContext)
 
   return (
-    <div className={css.container}>
+    <section className={css.section}>
       {
         showChat ? <ChatView /> : <Welcome />
       }
-    </div>
+    </section>
   )
 }

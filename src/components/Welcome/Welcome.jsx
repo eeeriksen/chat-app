@@ -25,14 +25,15 @@ export const Welcome = () => {
   }, [])
 
   return (
-    < div className={css.container}>
-      <p className={css.title}>Welcome!</p>
-      <label className={css.inputLabel} htmlFor="username">Username</label>
-      <div className={css.inputContainer}>
+    <main className={css.main}>
+      <h3 className={css.h3}>Welcome!</h3>
+      <label className={css.label} htmlFor="username">Username</label>
+      <section className={css.section}>
         <input
           ref={usernameInput}
           className={css.input}
           id="username"
+          autoComplete='off'
           value={username}
           onKeyUp={(e) => enter(e)}
           placeholder="Your username..."
@@ -40,8 +41,8 @@ export const Welcome = () => {
           type="text"
         />
         <button type='button' className={css.button} onClick={join}>Join</button>
-      </div>
-      {showAlert && <p className={css.alert}>Username is required</p>}
-    </div >
+      </section>
+      {showAlert && <p className={css.p}>Username is required</p>}
+    </main >
   )
 }
