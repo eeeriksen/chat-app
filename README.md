@@ -4,6 +4,6 @@
 
 Chat application using socket.io
 
-The server repository is [here](https://github.com/eriksenlezama/chat-server).
+The server repository is [here](https://github.com/eeeriksen/chat-server).
 
 My plan is to continue adding more features and functionalities.
