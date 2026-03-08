@@ -1,3 +1,3 @@
-import io from 'socket.io-client'
+import { io } from 'socket.io-client'
 
-export const Socket = io.connect('https://chat-server.eriksend.com')
+export const Socket = io('https://chat-server.eriksend.com')
